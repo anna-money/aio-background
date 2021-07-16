@@ -17,7 +17,7 @@ def read_version():
         if match is not None:
             return match.group(1)
     else:
-        raise RuntimeError("Cannot find version in aio_daemon/__init__.py")
+        raise RuntimeError("Cannot find version in aio_background/__init__.py")
 
 
 with open("README.md", "r") as fh:
