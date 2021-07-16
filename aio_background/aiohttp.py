@@ -5,7 +5,7 @@ import aiohttp.web
 
 from .job import Job
 
-_KEY = str(uuid.uuid4())
+_KEY = f"{__package__}.{uuid.uuid4()}"
 
 
 def setup_ctx(
