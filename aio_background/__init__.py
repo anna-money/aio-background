@@ -3,7 +3,7 @@ import re
 import sys
 
 from .job import Job  # noqa
-from .run import run, run_by_cron  # noqa
+from .run import run, run_by_cron, run_periodically  # noqa
 
 try:
     import aiohttp  # noqa
