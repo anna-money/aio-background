@@ -25,12 +25,12 @@ def run(func: Callable[[], Awaitable[None]], *, name: str = "unknown") -> Job:
 
 def run_by_cron(
     func: Callable[[], Awaitable[None]],
-    spec: str,
     *,
+    cron_expr: str,
     name: str = "unknown",
     suppress_exception: bool = True,
 ) -> Job:
-    cron = croniter.croniter(expr_format=spec, start_time=datetime.datetime.now(datetime.timezone.utc))
+    cron = croniter.croniter(expr_format=cron_expr, start_time=datetime.datetime.now(datetime.timezone.utc))
 
     async def by_cron() -> None:
         attempt = 0
@@ -54,8 +54,8 @@ def run_by_cron(
 
 def run_periodically(
     func: Callable[[], Awaitable[None]],
-    period: float,
     *,
+    period: float,
     name: str = "unknown",
     suppress_exception: bool = True,
 ) -> Job:

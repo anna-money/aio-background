@@ -15,7 +15,7 @@ async def test_by_cron():
             self.runs_count += 1
 
     task = Task()
-    token = aio_background.run_by_cron(task.run, "* * * * * *", name="by_cron")
+    token = aio_background.run_by_cron(task.run, cron_expr="* * * * * *", name="by_cron")
 
     await asyncio.sleep(5)
 
