@@ -15,7 +15,7 @@ async def test_periodically():
             self.runs_count += 1
 
     task = Task()
-    token = aio_background.run_periodically(task.run, 0.9, name="by_cron")
+    token = aio_background.run_periodically(task.run, 1, name="by_cron")
 
     await asyncio.sleep(5)
 
