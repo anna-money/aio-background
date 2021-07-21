@@ -50,7 +50,7 @@ async def test_should_close_failed(caplog):
     assert await token.close()
     assert not token.is_running
 
-    assert ["Job failed has stopped"] == [c.message for c in caplog.records if c.name == "aio_background"]
+    assert ["Job failed has unexpectedly stopped"] == [c.message for c in caplog.records if c.name == "aio_background"]
 
 
 async def test_should_close_completed(caplog):
@@ -67,4 +67,4 @@ async def test_should_close_completed(caplog):
     assert await token.close()
     assert not token.is_running
 
-    assert ["Job completed has stopped"] == [c.message for c in caplog.records if c.name == "aio_background"]
+    assert ["Job completed has unexpectedly stopped"] == [c.message for c in caplog.records if c.name == "aio_background"]

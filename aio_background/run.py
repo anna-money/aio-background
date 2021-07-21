@@ -16,7 +16,7 @@ def run(func: Callable[[], Awaitable[None]], *, name: str = "unknown") -> Job:
         if t.cancelled():
             return
 
-        logger.exception("Job %s has stopped", name, exc_info=t.exception())
+        logger.exception("Job %s has unexpectedly stopped", name, exc_info=t.exception())
 
     task = asyncio.create_task(func(), name=f"{__package__}.{name}")
     task.add_done_callback(report_if_not_cancelled)
@@ -50,3 +50,33 @@ def run_by_cron(
             attempt += 1
 
     return run(by_cron, name=name)
+
+
+def run_periodically(
+    func: Callable[[], Awaitable[None]],
+    period: float,
+    *,
+    name: str = "unknown",
+    suppress_exception: bool = True,
+) -> Job:
+    if period <= 0:
+        raise RuntimeError("Period should be positive")
+
+    async def periodically() -> None:
+        attempt = 0
+        while True:
+            try:
+                # to have independent async context per run
+                # to protect from misuse of contextvars
+                await asyncio.create_task(func(), name=f"{__package__}.{name}.{attempt}")
+            except Exception:
+                if not suppress_exception:
+                    raise
+
+                logger.exception("Job %s has got unexpected exception", name)
+
+            attempt += 1
+
+            await asyncio.sleep(period)
+
+    return run(periodically, name=name)
