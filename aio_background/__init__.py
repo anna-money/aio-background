@@ -3,10 +3,10 @@ import re
 import sys
 
 from .job import Job  # noqa
-from .run import run, run_by_cron, run_periodically  # noqa
+from .run import combine, run, run_by_cron, run_periodically  # noqa
 
 try:
-    import aiohttp  # noqa
+    import aiohttp as _aiohttp  # noqa
 
     from .aiohttp import is_healthy as aiohttp_is_healthy, setup_ctx as aiohttp_setup_ctx  # noqa
 except ImportError:

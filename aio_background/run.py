@@ -6,7 +6,7 @@ from typing import Awaitable, Callable
 
 import croniter  # type: ignore
 
-from .job import Job
+from .job import CombinedJob, Job, SingleTaskJob
 
 logger = logging.getLogger(__package__)
 
@@ -20,7 +20,7 @@ def run(func: Callable[[], Awaitable[None]], *, name: str = "unknown") -> Job:
 
     task = asyncio.create_task(func(), name=f"{__package__}.{name}")
     task.add_done_callback(report_if_not_cancelled)
-    return Job(task)
+    return SingleTaskJob(task)
 
 
 def run_by_cron(
@@ -80,3 +80,7 @@ def run_periodically(
             await asyncio.sleep(period)
 
     return run(periodically, name=name)
+
+
+def combine(*jobs: Job) -> Job:
+    return CombinedJob(jobs)
