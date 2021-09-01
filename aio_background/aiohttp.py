@@ -9,7 +9,8 @@ _KEY = f"{__package__}.{uuid.uuid4()}"
 
 
 def setup_ctx(
-    job_or_factory: Union[Job, Callable[[aiohttp.web.Application], Awaitable[Job]]]
+    job_or_factory: Union[Job, Callable[[aiohttp.web.Application], Awaitable[Job]]],
+    timeout: float = 0.5,
 ) -> Callable[[aiohttp.web.Application], AsyncIterator[None]]:
     async def setup(app: aiohttp.web.Application) -> AsyncIterator[None]:
         job = job_or_factory if isinstance(job_or_factory, Job) else await job_or_factory(app)
@@ -17,7 +18,7 @@ def setup_ctx(
             app[_KEY] = []
         app[_KEY].append(job)
         yield
-        await job.close()
+        await job.close(timeout=timeout)
 
     return setup
 
