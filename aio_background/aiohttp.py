@@ -10,6 +10,7 @@ _KEY = f"{__package__}.{uuid.uuid4()}"
 
 def setup_ctx(
     job_or_factory: Union[Job, Callable[[aiohttp.web.Application], Awaitable[Job]]],
+    *,
     timeout: float = 0.5,
 ) -> Callable[[aiohttp.web.Application], AsyncIterator[None]]:
     async def setup(app: aiohttp.web.Application) -> AsyncIterator[None]:
