@@ -1,14 +1,27 @@
 import collections
 import re
 import sys
+from typing import Tuple
 
 from .job import Job  # noqa
 from .run import combine, run, run_by_cron, run_periodically  # noqa
+
+__all__: Tuple[str, ...] = (
+    # job.py
+    "Job",
+    # run.py
+    "combine",
+    "run",
+    "run_by_cron",
+    "run_periodically",
+)
 
 try:
     import aiohttp as _aiohttp  # noqa
 
     from .aiohttp import is_healthy as aiohttp_is_healthy, setup_ctx as aiohttp_setup_ctx  # noqa
+
+    __all__ += ("aiohttp_is_healthy", "aiohttp_setup_ctx")
 except ImportError:
     pass
 
