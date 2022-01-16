@@ -4,7 +4,7 @@ import logging
 import time
 from typing import Awaitable, Callable
 
-import croniter  # type: ignore
+import croniter
 
 from .job import CombinedJob, Job, SingleTaskJob
 

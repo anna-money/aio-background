@@ -10,3 +10,4 @@ wheel==0.37.1
 twine==3.7.1
 pytest-aiohttp==0.3.0
 croniter==1.1.0
+types-croniter==1.0.7
