@@ -2,7 +2,7 @@ import asyncio
 import datetime
 import logging
 import time
-from typing import Awaitable, Callable
+from typing import Any, Callable, Coroutine
 
 import croniter
 
@@ -11,7 +11,7 @@ from .job import CombinedJob, Job, SingleTaskJob
 logger = logging.getLogger(__package__)
 
 
-def run(func: Callable[[], Awaitable[None]], *, name: str = "unknown") -> Job:
+def run(func: Callable[[], Coroutine[Any, Any, None]], *, name: str = "unknown") -> Job:
     def report_if_not_cancelled(t: asyncio.Task[None]) -> None:
         if t.cancelled():
             return
@@ -24,7 +24,7 @@ def run(func: Callable[[], Awaitable[None]], *, name: str = "unknown") -> Job:
 
 
 def run_by_cron(
-    func: Callable[[], Awaitable[None]],
+    func: Callable[[], Coroutine[Any, Any, None]],
     *,
     cron_expr: str,
     name: str = "unknown",
@@ -53,7 +53,7 @@ def run_by_cron(
 
 
 def run_periodically(
-    func: Callable[[], Awaitable[None]],
+    func: Callable[[], Coroutine[Any, Any, None]],
     *,
     period: float,
     name: str = "unknown",
