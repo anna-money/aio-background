@@ -19,10 +19,15 @@ def read_version():
     else:
         raise RuntimeError("Cannot find version in aio_background/__init__.py")
 
+long_description_parts = []
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+    long_description_parts.append(fh.read())
 
+with open("CHANGELOG.md", "r") as fh:
+    long_description_parts.append(fh.read())
+
+long_description = "\r\n".join(long_description_parts)
 
 setup(
     name="aio-background",

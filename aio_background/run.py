@@ -1,6 +1,7 @@
 import asyncio
 import datetime
 import logging
+import random
 import time
 from typing import Any, Callable, Coroutine
 
@@ -63,6 +64,9 @@ def run_periodically(
         raise RuntimeError("Period should be positive")
 
     async def periodically() -> None:
+        # to de-synchronize jobs started at the same time
+        await asyncio.sleep(period * random.random())
+
         attempt = 0
         while True:
             try:
