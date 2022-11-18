@@ -19,6 +19,7 @@ def read_version():
     else:
         raise RuntimeError("Cannot find version in aio_background/__init__.py")
 
+
 long_description_parts = []
 
 with open("README.md", "r") as fh:
@@ -46,4 +47,18 @@ setup(
     package_data={"aio_background": ["py.typed"]},
     install_requires=install_requires,
     include_package_data=True,
+    classifiers=[
+        "License :: OSI Approved :: MIT License",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Operating System :: OS Independent",
+        "Environment :: Web Environment",
+        "Development Status :: 5 - Production/Stable",
+        "Framework :: AsyncIO",
+        "Typing :: Typed",
+    ],
 )
