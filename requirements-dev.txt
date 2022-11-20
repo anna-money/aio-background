@@ -3,7 +3,7 @@ pytest-runner==6.0.0
 isort==5.10.1
 flake8==5.0.4
 mypy==0.982
-black==22.8.0
+black==22.10.0
 aiohttp==3.8.3
 setuptools==65.3.0
 wheel==0.37.1
