@@ -2,7 +2,7 @@ pytest==7.2.1
 pytest-runner==6.0.0
 isort==5.12.0
 flake8==6.0.0
-mypy==1.0.0
+mypy==1.1.1
 black==23.1.0
 aiohttp==3.8.4
 setuptools==67.2.0
