@@ -9,5 +9,5 @@ setuptools==68.0.0
 wheel==0.41.1
 twine==4.0.2
 pytest-aiohttp==1.0.4
-croniter==1.4.1
+croniter==2.0.1
 types-croniter==1.4.0.1
