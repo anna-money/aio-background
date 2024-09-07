@@ -13,7 +13,7 @@ mypy:
 	@mypy --strict --ignore-missing-imports aio_background
 
 flake8:
-	@flake8 --max-line-length 120 --ignore C901,C812,E203 --extend-ignore W503 aio_background tests
+	@flake8 --max-line-length 120 --ignore C901,C812,E203,E704 --extend-ignore W503 aio_background tests
 
 lint: black isort flake8 mypy
 
