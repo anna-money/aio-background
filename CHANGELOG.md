@@ -1,3 +1,8 @@
+## unreleased
+
+* [Support python 3.12, drop 3.9 and 3.10](https://github.com/anna-money/aio-background/pull/231)
+
+
 ## v0.0.9 (2022-11-18)
 
 * [Support python 3.11]
