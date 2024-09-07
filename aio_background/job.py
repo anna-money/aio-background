@@ -1,6 +1,5 @@
 import abc
 import asyncio
-from typing import Collection
 
 
 class Job(abc.ABC):
@@ -36,7 +35,7 @@ class SingleTaskJob(Job):
 class CombinedJob(Job):
     __slots__ = ("__jobs",)
 
-    def __init__(self, jobs: Collection[Job]):
+    def __init__(self, jobs: tuple[Job, ...]):
         self.__jobs = jobs
 
     @property

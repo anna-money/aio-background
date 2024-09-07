@@ -1,12 +1,11 @@
 import collections
 import re
 import sys
-from typing import Tuple
 
-from .job import Job  # noqa
-from .run import combine, run, run_by_cron, run_periodically  # noqa
+from .job import Job
+from .run import combine, run, run_by_cron, run_periodically
 
-__all__: Tuple[str, ...] = (
+__all__: tuple[str, ...] = (
     # job.py
     "Job",
     # run.py
