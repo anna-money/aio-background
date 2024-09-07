@@ -8,12 +8,10 @@ class Job(abc.ABC):
 
     @property
     @abc.abstractmethod
-    def is_running(self) -> bool:
-        ...
+    def is_running(self) -> bool: ...
 
     @abc.abstractmethod
-    async def close(self, *, timeout: float = 0.5) -> bool:
-        ...
+    async def close(self, *, timeout: float = 0.5) -> bool: ...
 
 
 class SingleTaskJob(Job):
