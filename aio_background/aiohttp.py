@@ -1,5 +1,5 @@
 import uuid
-from typing import Any, AsyncIterator, Callable, Coroutine, Union
+from typing import Any, AsyncIterator, Callable, Coroutine
 
 import aiohttp.web
 
@@ -9,7 +9,7 @@ _KEY = f"{__package__}.{uuid.uuid4()}"
 
 
 def setup_ctx(
-    job_or_factory: Union[Job, Callable[[aiohttp.web.Application], Coroutine[Any, Any, Job]]],
+    job_or_factory: Job | Callable[[aiohttp.web.Application], Coroutine[Any, Any, Job]],
     *,
     timeout: float = 0.5,
 ) -> Callable[[aiohttp.web.Application], AsyncIterator[None]]:
