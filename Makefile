@@ -21,7 +21,7 @@ test:
 	@python3 -m pytest -vv --rootdir tests .
 
 pyenv:
-	echo aio-background > .python-version && pyenv install -s 3.11 && pyenv virtualenv -f 3.11 aio-background
+	echo aio-background > .python-version && pyenv install -s 3.12 && pyenv virtualenv -f 3.12 aio-background
 
 pyenv-delete:
 	pyenv virtualenv-delete -f aio-background
