@@ -1,3 +1,8 @@
+## v0.0.11 (2025-03-12)
+
+* [Support python 3.13](https://github.com/anna-money/aio-background/pull/234)
+
+
 ## v0.0.10 (2024-09-07)
 
 * [Support python 3.12, drop 3.9 and 3.10](https://github.com/anna-money/aio-background/pull/231)
